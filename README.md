@@ -5,11 +5,13 @@
 [![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?logo=php&logoColor=white)](https://php.net)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-**An example WordPress plugin demonstrating [TailwindPHP](https://github.com/dnnsjsk/tailwindphp) integration.**
+**A boilerplate WordPress plugin for integrating [TailwindPHP](https://github.com/dnnsjsk/tailwindphp) with the block editor.**
 
 Use TailwindCSS classes directly in the WordPress block editor — no Node.js, no build step, no CDN, just PHP.
 
 > **Note:** This plugin does NOT use the Tailwind CDN. All CSS is generated server-side by TailwindPHP, giving you the full Tailwind experience with zero client-side overhead.
+
+Use this as a reference implementation or starting point for your own WordPress + TailwindCSS projects.
 
 ## Try It Now
 
