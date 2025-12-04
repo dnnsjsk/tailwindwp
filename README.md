@@ -7,7 +7,9 @@
 
 **An example WordPress plugin demonstrating [TailwindPHP](https://github.com/dnnsjsk/tailwindphp) integration.**
 
-Use TailwindCSS classes directly in the WordPress block editor — no Node.js, no build step, just PHP.
+Use TailwindCSS classes directly in the WordPress block editor — no Node.js, no build step, no CDN, just PHP.
+
+> **Note:** This plugin does NOT use the Tailwind CDN. All CSS is generated server-side by TailwindPHP, giving you the full Tailwind experience with zero client-side overhead.
 
 ## Try It Now
 
