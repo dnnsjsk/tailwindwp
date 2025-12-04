@@ -119,19 +119,6 @@ $css = tailwindwp_generate_css(['bg-blue-500', 'text-white', 'p-4'], [
 ]);
 ```
 
-## Local Development
-
-```bash
-# Install dependencies
-composer install
-npm install
-
-# Start WordPress Playground locally
-npm run playground
-```
-
-Then open http://localhost:9500
-
 ## Requirements
 
 - PHP 8.2+

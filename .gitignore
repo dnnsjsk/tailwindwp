@@ -1,12 +1,6 @@
-# Dependencies
-/node_modules/
-
 # Composer
 composer.phar
 composer.lock
-
-# npm
-package-lock.json
 
 # IDE
 .idea/
@@ -17,6 +11,3 @@ package-lock.json
 # OS
 .DS_Store
 Thumbs.db
-
-# Logs
-*.log
