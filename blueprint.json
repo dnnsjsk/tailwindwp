@@ -17,52 +17,9 @@
     {
       "step": "installPlugin",
       "pluginData": {
-        "resource": "wordpress.org/plugins",
-        "slug": "classic-editor"
-      },
-      "options": {
-        "activate": false
-      }
-    },
-    {
-      "step": "mkdir",
-      "path": "/wordpress/wp-content/plugins/tailwindwp"
-    },
-    {
-      "step": "writeFile",
-      "path": "/wordpress/wp-content/plugins/tailwindwp/composer.json",
-      "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/dnnsjsk/tailwindwp/main/composer.json"
+        "url": "https://github.com/dnnsjsk/tailwindwp/archive/refs/heads/main.zip"
       }
-    },
-    {
-      "step": "writeFile",
-      "path": "/wordpress/wp-content/plugins/tailwindwp/tailwindwp.php",
-      "data": {
-        "resource": "url",
-        "url": "https://raw.githubusercontent.com/dnnsjsk/tailwindwp/main/tailwindwp.php"
-      }
-    },
-    {
-      "step": "mkdir",
-      "path": "/wordpress/wp-content/plugins/tailwindwp/src"
-    },
-    {
-      "step": "writeFile",
-      "path": "/wordpress/wp-content/plugins/tailwindwp/src/editor.js",
-      "data": {
-        "resource": "url",
-        "url": "https://raw.githubusercontent.com/dnnsjsk/tailwindwp/main/src/editor.js"
-      }
-    },
-    {
-      "step": "runPHP",
-      "code": "<?php chdir('/wordpress/wp-content/plugins/tailwindwp'); putenv('COMPOSER_HOME=/tmp/composer'); $composer = file_get_contents('https://getcomposer.org/download/latest-stable/composer.phar'); file_put_contents('composer.phar', $composer); exec('php composer.phar install --no-dev --no-interaction 2>&1', $output); ?>"
-    },
-    {
-      "step": "activatePlugin",
-      "pluginPath": "tailwindwp/tailwindwp.php"
     },
     {
       "step": "runPHP",

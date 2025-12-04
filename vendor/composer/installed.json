@@ -1,14 +1,9 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "c4dd5aaa79850cada957bcd309ba8648",
     "packages": [
         {
             "name": "tailwindphp/tailwindphp",
             "version": "v1.0.1",
+            "version_normalized": "1.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dnnsjsk/tailwindphp.git",
@@ -28,10 +23,12 @@
                 "phpstan/phpstan": "^2.1",
                 "phpunit/phpunit": "^10.0"
             },
+            "time": "2025-12-04T16:31:35+00:00",
             "bin": [
                 "bin/tailwindphp"
             ],
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "src/_tailwindphp/LightningCss.php",
@@ -102,18 +99,9 @@
                 "issues": "https://github.com/dnnsjsk/tailwindphp/issues",
                 "source": "https://github.com/dnnsjsk/tailwindphp"
             },
-            "time": "2025-12-04T16:31:35+00:00"
+            "install-path": "../tailwindphp/tailwindphp"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": {},
-    "prefer-stable": false,
-    "prefer-lowest": false,
-    "platform": {
-        "php": "^8.2"
-    },
-    "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "dev": true,
+    "dev-package-names": []
 }

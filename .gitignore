@@ -1,9 +1,9 @@
 # Dependencies
-/vendor/
 /node_modules/
 
 # Composer
 composer.phar
+composer.lock
 
 # npm
 package-lock.json
