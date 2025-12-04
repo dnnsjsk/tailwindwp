@@ -13,7 +13,7 @@ Use TailwindCSS classes directly in the WordPress block editor — no Node.js, n
 
 ## Try It Now
 
-**[Open in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/dnnsjsk/tailwindwp/main/blueprint.json&v=1.0.2)** — Test the plugin instantly in your browser.
+**[Open in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/dnnsjsk/tailwindwp/main/blueprint.json&v=1.0.3)** — Test the plugin instantly in your browser.
 
 ## What This Demonstrates
 

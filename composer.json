@@ -1,6 +1,6 @@
 {
     "name": "tailwindphp/tailwindwp",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Use TailwindCSS classes directly in the WordPress block editor",
     "type": "wordpress-plugin",
     "license": "MIT",
