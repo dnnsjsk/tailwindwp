@@ -1,6 +1,6 @@
 {
   "$schema": "https://playground.wordpress.net/blueprint-schema.json",
-  "landingPage": "/wp-admin/post.php?post=4&action=edit",
+  "landingPage": "/wp-admin/post.php?post=5&action=edit",
   "preferredVersions": {
     "php": "8.2",
     "wp": "latest"
@@ -23,7 +23,11 @@
     },
     {
       "step": "runPHP",
-      "code": "<?php require_once 'wordpress/wp-load.php'; update_option('blogname', 'TailwindWP Demo'); wp_insert_post(['post_title' => 'TailwindWP Demo', 'post_status' => 'publish', 'post_content' => '<!-- wp:group {\"tailwindClasses\":\"bg-gradient-to-br from-blue-500 to-purple-600 p-8 rounded-2xl shadow-xl max-w-2xl mx-auto my-12\"} -->\n<div class=\"wp-block-group bg-gradient-to-br from-blue-500 to-purple-600 p-8 rounded-2xl shadow-xl max-w-2xl mx-auto my-12\"><!-- wp:heading {\"tailwindClasses\":\"text-white text-3xl font-bold mb-4\"} -->\n<h2 class=\"wp-block-heading text-white text-3xl font-bold mb-4\">Welcome to TailwindWP</h2>\n<!-- /wp:heading -->\n\n<!-- wp:paragraph {\"tailwindClasses\":\"text-blue-100 text-lg leading-relaxed\"} -->\n<p class=\"text-blue-100 text-lg leading-relaxed\">This demo shows TailwindCSS classes working directly in WordPress — no CDN, no build step. All CSS is generated server-side by TailwindPHP. Try editing the Tailwind Classes in the sidebar!</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:group -->']); ?>"
+      "code": "<?php require_once 'wordpress/wp-load.php'; update_option('blogname', 'TailwindWP Demo'); ?>"
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require_once 'wordpress/wp-load.php'; $content = '<!-- wp:group {\"tailwindClasses\":\"bg-gradient-to-br from-blue-500 to-purple-600 p-8 rounded-2xl shadow-xl max-w-2xl mx-auto my-12\"} -->' . \"\\n\" . '<div class=\"wp-block-group bg-gradient-to-br from-blue-500 to-purple-600 p-8 rounded-2xl shadow-xl max-w-2xl mx-auto my-12\">' . \"\\n\" . '<!-- wp:heading {\"tailwindClasses\":\"text-white text-3xl font-bold mb-4\"} -->' . \"\\n\" . '<h2 class=\"wp-block-heading text-white text-3xl font-bold mb-4\">Welcome to TailwindWP</h2>' . \"\\n\" . '<!-- /wp:heading -->' . \"\\n\" . '<!-- wp:paragraph {\"tailwindClasses\":\"text-blue-100 text-lg leading-relaxed\"} -->' . \"\\n\" . '<p class=\"text-blue-100 text-lg leading-relaxed\">This demo shows TailwindCSS classes working directly in WordPress. No CDN, no build step - all CSS is generated server-side by TailwindPHP. Try editing the Tailwind Classes in the sidebar!</p>' . \"\\n\" . '<!-- /wp:paragraph -->' . \"\\n\" . '</div>' . \"\\n\" . '<!-- /wp:group -->'; wp_insert_post(array('post_title' => 'TailwindWP Demo', 'post_status' => 'publish', 'post_type' => 'post', 'post_content' => $content)); ?>"
     }
   ]
 }
