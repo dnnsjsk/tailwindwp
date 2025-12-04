@@ -28,8 +28,13 @@
       }
     },
     {
-      "step": "runPHP",
-      "code": "<?php define('WP_ADMIN', true); require '/wordpress/wp-load.php'; $content = '<!-- wp:group {\"tailwindClasses\":\"bg-gradient-to-br from-blue-500 to-purple-600 p-8 rounded-2xl shadow-xl max-w-2xl mx-auto my-12\"} --><div class=\"wp-block-group bg-gradient-to-br from-blue-500 to-purple-600 p-8 rounded-2xl shadow-xl max-w-2xl mx-auto my-12\"><!-- wp:heading {\"tailwindClasses\":\"text-white text-3xl font-bold mb-4\"} --><h2 class=\"wp-block-heading text-white text-3xl font-bold mb-4\">Welcome to TailwindWP</h2><!-- /wp:heading --><!-- wp:paragraph {\"tailwindClasses\":\"text-blue-100 text-lg leading-relaxed\"} --><p class=\"text-blue-100 text-lg leading-relaxed\">This demo shows TailwindCSS classes working directly in WordPress. No CDN, no build step - all CSS is generated server-side by TailwindPHP. Try editing the Tailwind Classes in the sidebar!</p><!-- /wp:paragraph --></div><!-- /wp:group -->'; $post_id = wp_insert_post(array('post_title' => 'TailwindWP Demo', 'post_status' => 'publish', 'post_type' => 'post', 'post_content' => $content)); echo $post_id; ?>"
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/mu-plugins"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/create-demo-post.php",
+      "data": "<?php\nadd_action('admin_init', function() {\n    if (get_option('tailwindwp_demo_created')) return;\n    $content = '<!-- wp:group {\"tailwindClasses\":\"bg-gradient-to-br from-blue-500 to-purple-600 p-8 rounded-2xl shadow-xl max-w-2xl mx-auto my-12\"} --><div class=\"wp-block-group bg-gradient-to-br from-blue-500 to-purple-600 p-8 rounded-2xl shadow-xl max-w-2xl mx-auto my-12\"><!-- wp:heading {\"tailwindClasses\":\"text-white text-3xl font-bold mb-4\"} --><h2 class=\"wp-block-heading text-white text-3xl font-bold mb-4\">Welcome to TailwindWP</h2><!-- /wp:heading --><!-- wp:paragraph {\"tailwindClasses\":\"text-blue-100 text-lg leading-relaxed\"} --><p class=\"text-blue-100 text-lg leading-relaxed\">This demo shows TailwindCSS classes working directly in WordPress. No CDN, no build step - all CSS is generated server-side by TailwindPHP. Try editing the Tailwind Classes in the sidebar!</p><!-- /wp:paragraph --></div><!-- /wp:group -->';\n    wp_insert_post(['post_title' => 'TailwindWP Demo', 'post_status' => 'publish', 'post_content' => $content]);\n    update_option('tailwindwp_demo_created', true);\n});"
     }
   ]
 }
