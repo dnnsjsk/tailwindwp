@@ -56,7 +56,7 @@ function tailwindwp_generate_css(array $classes, array $options = []): string {
             {$scope} {
                 @import \"tailwindcss/preflight.css\" layer(base);
             }
-            @import \"tailwindcss/utilities.css\" layer(utilities);
+            @import \"tailwindcss/utilities.css\" layer(utilities) important;
         ";
     } else {
         // No scoping - include full Tailwind (frontend)
@@ -65,10 +65,10 @@ function tailwindwp_generate_css(array $classes, array $options = []): string {
                 @layer theme, base, components, utilities;
                 @import \"tailwindcss/theme.css\" layer(theme) theme(static);
                 @import \"tailwindcss/preflight.css\" layer(base);
-                @import \"tailwindcss/utilities.css\" layer(utilities);
+                @import \"tailwindcss/utilities.css\" layer(utilities) important;
             ";
         } else {
-            $css_input = '@import "tailwindcss";';
+            $css_input = '@import "tailwindcss" important;';
         }
     }
 
