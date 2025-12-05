@@ -1,7 +1,7 @@
 # TailwindPHP
 
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4.1.17-38bdf8?logo=tailwindcss&logoColor=white)](https://github.com/tailwindlabs/tailwindcss)
-[![Tests](https://img.shields.io/badge/Tests-3,913%20passing-brightgreen)](https://github.com/dnnsjsk/tailwindphp)
+[![Tests](https://img.shields.io/badge/Tests-4,025%20passing-brightgreen)](https://github.com/dnnsjsk/tailwindphp)
 [![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?logo=php&logoColor=white)](https://php.net)
 
 [![clsx](https://img.shields.io/badge/clsx-v2.1.1-blue)](https://github.com/lukeed/clsx)
@@ -11,7 +11,7 @@
 
 A 1:1 port of TailwindCSS 4.x to PHP. Generate Tailwind CSS using pure PHP — no Node.js required.
 
-> **Built with AI** — This entire codebase (29,000+ lines, 3,807 tests) was generated using [Claude Code](https://claude.ai/code). No manual coding was done.
+> **Built with AI** — This entire codebase (57,000+ lines, 4,025 tests) was generated using [Claude Code](https://claude.ai/code). No manual coding was done.
 
 ## Why This Exists
 
@@ -103,7 +103,7 @@ $css = tw::generate([
 
 ## Status
 
-✅ **3,913 tests passing** — Feature complete for core TailwindCSS functionality plus utility libraries.
+✅ **4,025 tests passing** — Feature complete for core TailwindCSS functionality plus utility libraries.
 
 | Test Suite | Tests | Status |
 |------------|-------|--------|
@@ -489,6 +489,8 @@ TailwindPHP provides a comprehensive API for CSS generation and inspection.
 
 Generate CSS from HTML content containing Tailwind classes.
 
+**Returns:** `string` - The generated CSS
+
 ```php
 use TailwindPHP\tw;
 
@@ -510,6 +512,8 @@ $css = tw::generate([
 
 Create a reusable `TailwindCompiler` instance for multiple operations.
 
+**Returns:** `TailwindCompiler` - A reusable compiler instance
+
 ```php
 use TailwindPHP\tw;
 
@@ -519,30 +523,30 @@ $compiler = tw::compile();
 // Create compiler with custom CSS
 $compiler = tw::compile('@import "tailwindcss"; @theme { --color-brand: #3b82f6; }');
 
-// Generate CSS from the compiler
-$css = $compiler->css('<div class="flex p-4 bg-brand">');
+// Extract candidates and generate CSS
+$candidates = $compiler->extractCandidates('<div class="flex p-4 bg-brand">');
+$css = $compiler->css($candidates);
 
-// Minified output
-$minified = $compiler->css('<div class="flex p-4">', minify: true);
+// Or minify the output
+$minified = $compiler->minify($css);
 ```
 
 ### `tw::properties()`
 
 Get raw CSS properties for a class (unresolved CSS variables).
 
+**Returns:** `array<string, string>` - Property name to value mapping
+
 ```php
 use TailwindPHP\tw;
 
-// Static method - single class
+// Single class
 tw::properties('p-4');
 // ['padding' => 'calc(var(--spacing) * 4)']
 
-// Static method - multiple classes
+// Multiple classes
 tw::properties('flex items-center p-4');
 // ['display' => 'flex', 'align-items' => 'center', 'padding' => 'calc(var(--spacing) * 4)']
-
-// With custom CSS
-tw::properties('bg-brand', '@import "tailwindcss"; @theme { --color-brand: #3b82f6; }');
 
 // From compiler instance
 $compiler = tw::compile();
@@ -552,6 +556,8 @@ $compiler->properties('p-4');
 ### `tw::computedProperties()`
 
 Get computed CSS properties with all variables resolved.
+
+**Returns:** `array<string, string>` - Property name to resolved value mapping
 
 ```php
 use TailwindPHP\tw;
@@ -575,49 +581,55 @@ $compiler->computedProperties('p-4');
 
 ### `tw::value()`
 
-Get raw value for a single CSS property (unresolved).
+Get raw value for a utility class (unresolved).
+
+**Returns:** `?string` - The raw CSS value, or null if utility not found
 
 ```php
 use TailwindPHP\tw;
 
 // Static method
-tw::value('p-4', 'padding');
+tw::value('p-4');
 // 'calc(var(--spacing) * 4)'
 
-tw::value('text-blue-500', 'color');
+tw::value('text-blue-500');
 // 'var(--color-blue-500)'
 
 // From compiler instance
 $compiler = tw::compile();
-$compiler->value('p-4', 'padding');
+$compiler->value('p-4');
 ```
 
 ### `tw::computedValue()`
 
-Get computed value for a single CSS property (resolved).
+Get computed value for a utility class (resolved).
+
+**Returns:** `?string` - The resolved CSS value, or null if utility not found
 
 ```php
 use TailwindPHP\tw;
 
 // Static method
-tw::computedValue('p-4', 'padding');
+tw::computedValue('p-4');
 // '1rem'
 
-tw::computedValue('text-blue-500', 'color');
+tw::computedValue('text-blue-500');
 // 'oklch(.546 .245 262.881)'
 
-tw::computedValue('gap-4', 'gap');
+tw::computedValue('gap-4');
 // '1rem'
 
 // From compiler instance
 $compiler = tw::compile();
-$compiler->computedValue('p-4', 'padding');
+$compiler->computedValue('p-4');
 // '1rem'
 ```
 
 ### `tw::extractCandidates()`
 
 Extract Tailwind class names from content.
+
+**Returns:** `array<string>` - Array of extracted class names
 
 ```php
 use TailwindPHP\tw;
@@ -630,6 +642,8 @@ tw::extractCandidates('<div class="flex p-4" className="bg-blue-500">');
 
 Minify CSS output.
 
+**Returns:** `string` - The minified CSS
+
 ```php
 use TailwindPHP\tw;
 
@@ -640,6 +654,8 @@ $minified = tw::minify($css);
 ### `tw::clearCache()`
 
 Clear the CSS cache.
+
+**Returns:** `int` - Number of files deleted
 
 ```php
 use TailwindPHP\tw;
@@ -677,16 +693,16 @@ When using `tw::compile()`, the returned compiler provides instance methods:
 $compiler = tw::compile('@import "tailwindcss"; @theme { --color-brand: #3b82f6; }');
 
 // Generate CSS
-$compiler->css('<div class="flex p-4 bg-brand">');
-$compiler->css('<div class="flex">', minify: true);
+$candidates = $compiler->extractCandidates('<div class="flex p-4 bg-brand">');
+$css = $compiler->css($candidates);
 
 // Get properties
-$compiler->properties('p-4');           // Raw: ['padding' => 'calc(var(--spacing) * 4)']
-$compiler->computedProperties('p-4');   // Computed: ['padding' => '1rem']
+$compiler->properties('bg-brand');           // ['background-color' => 'var(--color-brand)']
+$compiler->computedProperties('bg-brand');   // ['background-color' => '#3b82f6']
 
 // Get single values
-$compiler->value('p-4', 'padding');           // Raw: 'calc(var(--spacing) * 4)'
-$compiler->computedValue('p-4', 'padding');   // Computed: '1rem'
+$compiler->value('bg-brand');           // 'var(--color-brand)'
+$compiler->computedValue('bg-brand');   // '#3b82f6'
 ```
 
 ---

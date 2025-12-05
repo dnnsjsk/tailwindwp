@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'tailwindphp/tailwindphp' => array(
-            'pretty_version' => 'v1.1.0',
-            'version' => '1.1.0.0',
-            'reference' => 'afac0149ff587dcea9441a122b10d44a957a1700',
+            'pretty_version' => 'v1.2.0',
+            'version' => '1.2.0.0',
+            'reference' => 'c63f5c5e5144fbeace63afa23ee7debc101c4fb4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../tailwindphp/tailwindphp',
             'aliases' => array(),
