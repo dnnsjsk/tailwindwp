@@ -22,6 +22,8 @@ if (file_exists($autoload)) {
     require_once $autoload;
 }
 
+use TailwindPHP\tw;
+
 /**
  * Generate CSS from Tailwind classes
  *
@@ -70,7 +72,7 @@ function tailwindwp_generate_css(array $classes, array $options = []): string {
         }
     }
 
-    return \TailwindPHP\Tailwind::generate([
+    return tw::generate([
         'content' => '<div class="' . $content . '">',
         'css' => $css_input,
         'minify' => $options['minify'] ?? false,
