@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'tailwindphp/tailwindwp',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => '1.0.8',
+        'version' => '1.0.8.0',
         'reference' => null,
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
@@ -11,17 +11,17 @@
     ),
     'versions' => array(
         'tailwindphp/tailwindphp' => array(
-            'pretty_version' => 'v1.0.1',
-            'version' => '1.0.1.0',
-            'reference' => '5784b1d4355141ce911ed247d9c01d055f3092bf',
+            'pretty_version' => 'v1.1.0',
+            'version' => '1.1.0.0',
+            'reference' => 'afac0149ff587dcea9441a122b10d44a957a1700',
             'type' => 'library',
             'install_path' => __DIR__ . '/../tailwindphp/tailwindphp',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'tailwindphp/tailwindwp' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => '1.0.8',
+            'version' => '1.0.8.0',
             'reference' => null,
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
