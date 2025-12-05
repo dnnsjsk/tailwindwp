@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "tailwindphp/tailwindphp",
-            "version": "v1.2.0",
-            "version_normalized": "1.2.0.0",
+            "version": "v1.2.1",
+            "version_normalized": "1.2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dnnsjsk/tailwindphp.git",
-                "reference": "c63f5c5e5144fbeace63afa23ee7debc101c4fb4"
+                "reference": "fa439c183b50a44b86b1091885e23c32d9d30f5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dnnsjsk/tailwindphp/zipball/c63f5c5e5144fbeace63afa23ee7debc101c4fb4",
-                "reference": "c63f5c5e5144fbeace63afa23ee7debc101c4fb4",
+                "url": "https://api.github.com/repos/dnnsjsk/tailwindphp/zipball/fa439c183b50a44b86b1091885e23c32d9d30f5d",
+                "reference": "fa439c183b50a44b86b1091885e23c32d9d30f5d",
                 "shasum": ""
             },
             "require": {
@@ -24,7 +24,7 @@
                 "phpstan/phpstan": "^2.1",
                 "phpunit/phpunit": "^10.0"
             },
-            "time": "2025-12-05T10:27:02+00:00",
+            "time": "2025-12-05T17:16:19+00:00",
             "bin": [
                 "bin/tailwindphp"
             ],

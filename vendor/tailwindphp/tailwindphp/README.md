@@ -53,6 +53,9 @@ Building TailwindPHP created an opportunity to unify the Tailwind ecosystem's be
   - [tw::extractCandidates()](#twextractcandidates)
   - [tw::minify()](#twminify)
   - [tw::clearCache()](#twclearcache)
+  - [tw::colors()](#twcolors)
+  - [tw::breakpoints()](#twbreakpoints)
+  - [tw::spacing()](#twspacing)
   - [Input Formats](#input-formats)
   - [TailwindCompiler Instance Methods](#tailwindcompiler-instance-methods)
 - [Classname Utilities](#classname-utilities)
@@ -523,9 +526,8 @@ $compiler = tw::compile();
 // Create compiler with custom CSS
 $compiler = tw::compile('@import "tailwindcss"; @theme { --color-brand: #3b82f6; }');
 
-// Extract candidates and generate CSS
-$candidates = $compiler->extractCandidates('<div class="flex p-4 bg-brand">');
-$css = $compiler->css($candidates);
+// Generate CSS
+$css = $compiler->generate('<div class="flex p-4 bg-brand">');
 
 // Or minify the output
 $minified = $compiler->minify($css);
@@ -636,6 +638,11 @@ use TailwindPHP\tw;
 
 tw::extractCandidates('<div class="flex p-4" className="bg-blue-500">');
 // ['flex', 'p-4', 'bg-blue-500']
+
+// From compiler instance
+$compiler = tw::compile();
+$compiler->extractCandidates('<div class="flex p-4">');
+// ['flex', 'p-4']
 ```
 
 ### `tw::minify()`
@@ -649,6 +656,11 @@ use TailwindPHP\tw;
 
 $css = tw::generate('<div class="flex p-4">');
 $minified = tw::minify($css);
+
+// From compiler instance
+$compiler = tw::compile();
+$css = $compiler->generate('<div class="flex p-4">');
+$minified = $compiler->minify($css);
 ```
 
 ### `tw::clearCache()`
@@ -665,6 +677,67 @@ tw::clearCache();
 
 // Clear custom cache directory
 tw::clearCache('/path/to/cache');
+```
+
+### `tw::colors()`
+
+Get all color values from the theme.
+
+**Returns:** `array<string, string>` - Map of color name to computed value
+
+```php
+use TailwindPHP\tw;
+
+tw::colors();
+// ['red-500' => 'oklch(63.7% 0.237 25.331)', 'blue-500' => 'oklch(62.3% 0.214 259.815)', ...]
+
+// With custom theme
+tw::colors('@import "tailwindcss"; @theme { --color-brand: #3b82f6; }');
+// [..., 'brand' => '#3b82f6']
+
+// From compiler instance
+$compiler = tw::compile();
+$compiler->colors();
+```
+
+### `tw::breakpoints()`
+
+Get all breakpoint values from the theme.
+
+**Returns:** `array<string, string>` - Map of breakpoint name to value
+
+```php
+use TailwindPHP\tw;
+
+tw::breakpoints();
+// ['sm' => '40rem', 'md' => '48rem', 'lg' => '64rem', 'xl' => '80rem', '2xl' => '96rem']
+
+// With custom theme
+tw::breakpoints('@import "tailwindcss"; @theme { --breakpoint-xs: 20rem; }');
+// ['xs' => '20rem', 'sm' => '40rem', ...]
+
+// From compiler instance
+$compiler = tw::compile();
+$compiler->breakpoints();
+```
+
+### `tw::spacing()`
+
+Get custom spacing values from the theme.
+
+**Returns:** `array<string, string>` - Map of spacing name to value
+
+```php
+use TailwindPHP\tw;
+
+// Note: TailwindCSS 4 uses a single --spacing base value, not --spacing-* namespace
+// This returns any custom --spacing-* values defined in the theme
+tw::spacing('@import "tailwindcss"; @theme { --spacing-huge: 10rem; }');
+// ['huge' => '10rem']
+
+// From compiler instance
+$compiler = tw::compile();
+$compiler->spacing();
 ```
 
 ### Input Formats
@@ -693,8 +766,10 @@ When using `tw::compile()`, the returned compiler provides instance methods:
 $compiler = tw::compile('@import "tailwindcss"; @theme { --color-brand: #3b82f6; }');
 
 // Generate CSS
+$css = $compiler->generate('<div class="flex p-4 bg-brand">');
+
+// Extract candidates
 $candidates = $compiler->extractCandidates('<div class="flex p-4 bg-brand">');
-$css = $compiler->css($candidates);
 
 // Get properties
 $compiler->properties('bg-brand');           // ['background-color' => 'var(--color-brand)']
@@ -703,6 +778,19 @@ $compiler->computedProperties('bg-brand');   // ['background-color' => '#3b82f6'
 // Get single values
 $compiler->value('bg-brand');           // 'var(--color-brand)'
 $compiler->computedValue('bg-brand');   // '#3b82f6'
+
+// Minify CSS
+$minified = $compiler->minify($css);
+
+// Get theme values
+$compiler->colors();          // All color values
+$compiler->breakpoints();     // All breakpoint values
+$compiler->spacing();         // Custom spacing values
+
+// Access internals (advanced)
+$compiler->getTheme();        // Theme object with resolved values
+$compiler->getDesignSystem(); // Design system with utilities, variants, etc.
+$compiler->getCompiled();     // Raw compiled state array
 ```
 
 ---
