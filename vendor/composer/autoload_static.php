@@ -9,8 +9,6 @@ class ComposerStaticInit7f9ce7e59330f8c2730042a3e155cf73
     public static $files = array (
         '6b857cda55ab5529c7ba3e679a985b8f' => __DIR__ . '/..' . '/tailwindphp/tailwindphp/src/_tailwindphp/LightningCss.php',
         'ac375adccc2419508bc3cd083ec76dd4' => __DIR__ . '/..' . '/tailwindphp/tailwindphp/src/_tailwindphp/CssMinifier.php',
-        '9c56ac848a788330451dd0fa8672cb55' => __DIR__ . '/..' . '/tailwindphp/tailwindphp/src/_tailwindphp/CandidateParser.php',
-        '01f5e93e86bd37a362a565a72a4fa62b' => __DIR__ . '/..' . '/tailwindphp/tailwindphp/src/_tailwindphp/CssFormatter.php',
         '5d54a9b7c062923fbacecdf315bdd7a7' => __DIR__ . '/..' . '/tailwindphp/tailwindphp/src/attribute-selector-parser.php',
         '06e710e1cb8a401aa71334aced4dedfe' => __DIR__ . '/..' . '/tailwindphp/tailwindphp/src/utils/segment.php',
         '28c3639c2618d8914aa8280f9002c7a6' => __DIR__ . '/..' . '/tailwindphp/tailwindphp/src/utils/escape.php',

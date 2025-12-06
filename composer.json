@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "tailwindphp/tailwindphp": "^1.2.0"
+        "tailwindphp/tailwindphp": "^1.2.2"
     },
     "autoload": {
         "files": []

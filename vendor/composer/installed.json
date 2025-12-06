@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "tailwindphp/tailwindphp",
-            "version": "v1.2.1",
-            "version_normalized": "1.2.1.0",
+            "version": "v1.2.2",
+            "version_normalized": "1.2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dnnsjsk/tailwindphp.git",
-                "reference": "fa439c183b50a44b86b1091885e23c32d9d30f5d"
+                "reference": "03f66b3c575cff109ffda494becedcb7f3e150c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dnnsjsk/tailwindphp/zipball/fa439c183b50a44b86b1091885e23c32d9d30f5d",
-                "reference": "fa439c183b50a44b86b1091885e23c32d9d30f5d",
+                "url": "https://api.github.com/repos/dnnsjsk/tailwindphp/zipball/03f66b3c575cff109ffda494becedcb7f3e150c5",
+                "reference": "03f66b3c575cff109ffda494becedcb7f3e150c5",
                 "shasum": ""
             },
             "require": {
@@ -24,7 +24,7 @@
                 "phpstan/phpstan": "^2.1",
                 "phpunit/phpunit": "^10.0"
             },
-            "time": "2025-12-05T17:16:19+00:00",
+            "time": "2025-12-06T09:08:03+00:00",
             "bin": [
                 "bin/tailwindphp"
             ],
@@ -34,8 +34,6 @@
                 "files": [
                     "src/_tailwindphp/LightningCss.php",
                     "src/_tailwindphp/CssMinifier.php",
-                    "src/_tailwindphp/CandidateParser.php",
-                    "src/_tailwindphp/CssFormatter.php",
                     "src/attribute-selector-parser.php",
                     "src/utils/segment.php",
                     "src/utils/escape.php",

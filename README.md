@@ -1,13 +1,16 @@
-# TailwindWP
+<div align="center">
+
+# 🎨 TailwindWP
+**TailwindCSS for the WordPress Block Editor**
+
+Use Tailwind classes directly in Gutenberg — no Node.js, no build step, no CDN.
 
 [![TailwindPHP](https://img.shields.io/badge/Powered%20by-TailwindPHP-38bdf8)](https://github.com/dnnsjsk/tailwindphp)
 [![WordPress](https://img.shields.io/badge/WordPress-6.0+-21759b?logo=wordpress)](https://wordpress.org)
 [![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?logo=php&logoColor=white)](https://php.net)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-**A boilerplate WordPress plugin for integrating [TailwindPHP](https://github.com/dnnsjsk/tailwindphp) with the block editor.**
-
-Use TailwindCSS classes directly in the WordPress block editor — no Node.js, no build step, no CDN, just PHP.
+</div>
 
 > **Note:** This plugin does NOT use the Tailwind CDN. All CSS is generated server-side by TailwindPHP, giving you the full Tailwind experience with zero client-side overhead.
 
