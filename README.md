@@ -1,6 +1,6 @@
 <div align="center">
 
-<h1>🎨 TailwindWP</h1>
+# 🎨 TailwindWP
 
 **TailwindCSS for the WordPress Block Editor**
 
