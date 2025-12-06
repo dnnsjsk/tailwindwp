@@ -1,6 +1,7 @@
 <div align="center">
 
-# 🎨 TailwindWP
+<h1>🎨 TailwindWP</h1>
+
 **TailwindCSS for the WordPress Block Editor**
 
 Use Tailwind classes directly in Gutenberg — no Node.js, no build step, no CDN.
